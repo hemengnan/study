@@ -208,4 +208,3 @@ Kryo 是专门针对 Java 语言序列化方式并且性能非常好，如果你
 
 除了我上面介绍到的序列化方式的话，还有像 Thrift，Avro 这些。
 
-<!-- @include: @article-footer.snippet.md -->
