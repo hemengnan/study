@@ -1,6 +1,3 @@
----
-sidebar: 'auto'
----
 
 # Grid布局相关属性
 

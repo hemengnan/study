@@ -1,6 +1,3 @@
----
-sidebar: 'auto'
----
 
 # Flex布局相关属性
 
