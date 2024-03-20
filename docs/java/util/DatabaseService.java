@@ -41,7 +41,7 @@ public class DatabaseService {
         sql.append(tableName).append(" (");
         sql.append("id bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,");
         if (StringUtils.isNotBlank(uniqueKey)) {
-            sql.append(uniqueKey).append(" varchar(50) NOT NULL UNION KEY,");
+            sql.append(uniqueKey).append(" varchar(50) NOT NULL UNIQUE,");
         }
 
         // 将 Map 中的键连接起来作为字段定义
