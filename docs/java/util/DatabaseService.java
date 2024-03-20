@@ -32,7 +32,7 @@ public class DatabaseService {
         return result != null && result > 0;
     }
 
-    public void createTable(String tableName, Map<String, Object> columnMap, String unionKey) {
+    public void createTable(String tableName, Map<String, Object> columnMap, String uniqueKey) {
         if (tableExists(tableName)) {
             return;
         }
@@ -40,13 +40,16 @@ public class DatabaseService {
         StringBuilder sql = new StringBuilder("CREATE TABLE ");
         sql.append(tableName).append(" (");
         sql.append("id bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,");
-        if (StringUtils.isNotBlank(unionKey)) {
-            sql.append(unionKey).append(" varchar(50) NOT NULL UNION KEY,");
+        if (StringUtils.isNotBlank(uniqueKey)) {
+            sql.append(uniqueKey).append(" varchar(50) NOT NULL UNION KEY,");
         }
 
         // 将 Map 中的键连接起来作为字段定义
         for (String columnName : columnMap.keySet()) {
             if ("id".equals(columnName)) {
+                continue;
+            }
+            if(StringUtils.isNotBlank(uniqueKey) && columnName.equals(uniqueKey)){
                 continue;
             }
             sql.append(columnName).append(" text, ");
